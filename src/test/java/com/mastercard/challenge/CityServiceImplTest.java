@@ -4,14 +4,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 
-import com.mastercard.challenge.controller.CityApiRestController;
 import com.mastercard.challenge.controller.Parser;
 import com.mastercard.challenge.service.CityServiceImpl;
 
@@ -32,7 +31,7 @@ public class CityServiceImplTest {
 	
 	@Test
 	public void testParser(){
-		List list = Parser.parseFile();
+		Set list = Parser.parseFile();
 		
 		assertNotNull(list);
 	}

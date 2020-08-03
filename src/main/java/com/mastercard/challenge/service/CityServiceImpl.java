@@ -3,6 +3,7 @@ package com.mastercard.challenge.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -27,11 +28,14 @@ public class CityServiceImpl implements CityService {
 		inputList.add(destination);
 		Collections.sort(inputList);
 		
-		List<List<String>> bigFileList = null;
+		Set<List<String>> bigFileList = null;
+		
+		boolean isRoadConnected = false;
 		
 		bigFileList = Parser.parseFile();
-	    boolean isRoadConnected =  bigFileList.stream().anyMatch(e -> e.equals(inputList));
-	    
+		if (bigFileList!= null && bigFileList.size() >0){
+			isRoadConnected =  bigFileList.stream().anyMatch(e -> e.equals(inputList));
+		}
 		return isRoadConnected;
 	}
 }
